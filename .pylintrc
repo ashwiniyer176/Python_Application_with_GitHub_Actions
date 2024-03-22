@@ -1,0 +1,7 @@
+[FORMAT]
+
+# Set the maximum line length threshold score
+max-line-length=120
+
+# Add or modify the ignore setting to include trailing-whitespace
+ignore = trailing-whitespace

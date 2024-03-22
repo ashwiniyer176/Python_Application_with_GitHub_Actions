@@ -1,10 +1,14 @@
+"""
+Module to script everything. Entrypoint to this parser
+"""
 
-from pypdf import PdfReader
+from resume_parser import ResumeParser
 
-reader = PdfReader("assets/Ashwin_U_Iyer_s_Resume.pdf")
-
-# See what is there:
-print(str(reader.metadata))
-print(reader.get_page_number())
-# Or just access specific values:
-print(reader.metadata.creation_date)  # that is actually a datetime object!
+if __name__ == "__main__":
+#To store extracted resumes
+    #Select a path to the file - code needs os.path #to be addded
+    RESUME_PATH = "assets/Ashwin_U_Iyer_s_Resume.pdf"
+    #Invoking document parsers based on file format
+    #Note: for TXT - do a normal f.read()
+    parser = ResumeParser(RESUME_PATH)
+    print(type(parser.resume_text))
