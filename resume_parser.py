@@ -1,7 +1,11 @@
-import pypdf
-import docx
+"""
+A Resume Parser built to extract relevant metadata from resumes built on LaTex as PDF or DOCX
+"""
+
 import string
 import re
+import pypdf
+import docx
 
 class ResumeParser:
     """
@@ -36,12 +40,12 @@ class ResumeParser:
 
     #Extract text from DOCX
     def get_docx_content(self):
-        filename = self.file_path
-        doc = docx.Document(filename)
-        fullText = ""
+        file_name = self.file_path
+        doc = docx.Document(file_name)
+        content = ""
         for para in doc.paragraphs:
-            fullText += para.text
-        return fullText
+            content += para.text
+        return content
     
     def parse_resume_text(self):
         self.resume_content={}
@@ -51,7 +55,6 @@ class ResumeParser:
         phone_pattern = r'\+\d{1,3}-\d{9,10}'
         linkedin_pattern = r'linkedin\.com/[A-Za-z0-9_.-]+'
         website_pattern = r'\b(?:https?://)?(?:www\.)?[\w.-]+\.[a-zA-Z]{2,}(?:/\S*)?\b'
-        medium_pattern = r'medium\.com/[A-Za-z0-9_.-]+'
         
         # Find matches using regex
         self.resume_content["email"] = re.findall(email_pattern, self.resume_text)
@@ -64,10 +67,10 @@ class ResumeParser:
         
 if __name__ == "__main__":
 #To store extracted resumes
-    resume = ""
     #Select a path to the file - code needs os.path #to be addded
-    filename = "assets/Ashwin_U_Iyer_s_Resume.pdf"
+    RESUME_PATH = "assets/Ashwin_U_Iyer_s_Resume.pdf"
     #Invoking document parsers based on file format
     #Note: for TXT - do a normal f.read()
-    parser = ResumeParser(filename)
+    parser = ResumeParser(RESUME_PATH)
     print(type(parser.resume_text))
+    
