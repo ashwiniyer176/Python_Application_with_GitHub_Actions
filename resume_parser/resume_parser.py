@@ -9,6 +9,7 @@ class ResumeParser:
     """
     A Resume Parser built to extract relevant metadata from resumes built on LaTex as PDF or DOCX
     """
+    
     def __init__(self, file_path) -> None:
         self.file_path = file_path
         self.resume_text = None
