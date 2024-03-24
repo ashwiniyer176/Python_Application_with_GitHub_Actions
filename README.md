@@ -1,4 +1,4 @@
-# Resume Parser
+# Resume Parser with GitHub Actions
 
 This is a simple resume parser built with Python. The main purpose of this project is to serve as a learning exercise for implementing Continuous Integration/Continuous Deployment (CI/CD) pipelines.
 
